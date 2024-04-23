@@ -1,0 +1,29 @@
+let modelUsuario = (sequelize, DataTypes) => {
+    let alias = "Usuarios";
+    let columns = {
+        id : {
+            type : DataTypes.INTEGER , 
+            allowNull : false ,
+            primaryKey : true ,
+            autoIncrement : true ,
+        },
+        nombre : DataTypes.STRING, 
+        apellido : DataTypes.STRING, 
+        email :  DataTypes.STRING, 
+        password : DataTypes.STRING, 
+        userImage : DataTypes.STRING ,
+        rol : DataTypes.STRING, 
+        estado :  DataTypes.INTEGER,
+    };
+    let config = {
+        tableName : "usuarios",
+        timestamps : false
+    };
+    let Usuario = sequelize.define(alias, columns, config);
+
+    
+    
+    return Usuario
+}
+
+module.exports = modelUsuario;

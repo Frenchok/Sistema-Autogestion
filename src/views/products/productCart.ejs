@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+	<%- include('../partials/head') %>
+		<link rel="stylesheet" href="/css/styles-header.css">
+		<link href="/css/styles-productCart.css" rel="stylesheet">
+		<script src="/js/cart.js"></script>
+		<title>Golosinas Mailin</title>
+</head>
+
+<body>
+
+	<%- include('../partials/header') %>
+
+	<h1 class="titulo">CARRITO</h1>
+		<main>
+ 		<div class="contenedor-carrito">
+				<table class="tabla_productos">
+					<thead>
+						<tr class="subtitulos">
+							<th class="col-1 subtitulos_producto" colspan="3">PRODUCTO</th>
+							<th class="col-2">PRECIO</th>
+							<th class="col-3">CANTIDAD</th>
+							<th class="col-4">SUBTOTAL</th>
+						</tr>
+					</thead>
+					<tbody class="cardRows">				
+					</tbody>
+				</table>
+				<div class="contenedor_total">
+						<h2>TOTAL: <span class="totalCarrito"></span></h2>
+				</div>
+			</div>
+			<div class="seguir-finalizar">
+				<a href="/productos" class="boton_seguir-comprando"> <i
+						class="fa-solid fa-arrow-left"></i> SEGUIR COMPRANDO</a>
+				<form method="post" id="form-cart">
+					<button type="submit" class="boton_finalizar-compra">FInalizar Compra</button>
+				</form>
+			</div>
+
+			<div class="contendor_carrito-vacio">
+				<h4 class="titulo_carrito-vacio">No tienes productos en el carrito</h4>
+				<a href="/productos" class="btn_ir-tienda">IR A TIENDA</a>
+			</div>
+		</main>
+
+		<%- include('../partials/footer') %>
+
+</body>
+
+</html>

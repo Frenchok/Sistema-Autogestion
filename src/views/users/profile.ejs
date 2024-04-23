@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/styles-header.css" />
+    <link rel="stylesheet" href="/css/styles-perfil.css" />
+    <link rel="stylesheet" href="/css/styles-Loginregister.css" />
+    <title>Mi Perfil</title>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+    <main class="main__container">
+
+      <% if (locals.errors && errors.general) { %>
+        <small class="text-danger">
+          <%= errors.general.msg %>
+        </small>
+        <% } %>
+
+            <section class="secciones-perfil" id="perfil">
+              <h2>Mi Cuenta</h2>
+              <div class="datos-perfil">
+                <div class="contenedor-avatar">
+                  <img src="/images/users/<%= user.avatar %>" />
+                </div>
+                <div class="datos">
+                  <h3><%= isAdmin? 'Admin: ': null %> <%= user.nombre+ ' ' +user.apellido %> </h3>
+                  <p>Email: <%= user.email %> </p>
+                </div>
+              </div>
+              <div class="datos-acciones">
+                <a href="/user/profile/edit" class="btn  btn-editar"><i class="fa-regular fa-pen-to-square"></i>Editar mis Datos</a>
+                <a href="/user/resetpassword" class="btn btn-cambiar"><i class="fa-solid fa-lock"></i>Cambiar Contraseña</a>
+                  <form action="/user/delete?_method=DELETE" method="POST" class="form-delete">
+                    <button type="submit" class="btn btn-eliminar" onsubmit="return confirm('¿Estás seguro de que quieres eliminar tu cuenta?');" style="display: inline-flex"><i class="fa-solid fa-trash"></i>Eliminar mi Cuenta</button>
+                  </form>
+              </div>
+              <% if (isAdmin) { %>
+                <div >
+                    <a href="/user/register"> <i class="fa-solid fa-plus"></i> Agregar Usuario</a>
+                    <a href="/productos"><i class="fa-solid fa-plus"></i> Ver Usuario</a>
+                </div>
+            <% } %>
+            </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>
+    
+</body>
+
+</html>

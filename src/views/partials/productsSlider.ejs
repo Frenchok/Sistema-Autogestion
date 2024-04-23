@@ -1,0 +1,40 @@
+<% products.forEach(product=> { %>
+    <article class="sliderProducto--card">
+        <a href="/productos/<%=product.id%>" class="sliderProducto--card-img">
+            <img src="/images/products/<%=product.imagen%>" alt="<%=product.nombre%>">
+        </a>
+        <%if(product.descuento> 0) { %>
+            <div class="contenedor-descuento">
+                <p class="descuento">
+                    <%=product.descuento%>% OFF
+                </p>
+            </div>
+            <% } %>
+                <div class="card-descripcion">
+                    <p class="sliderProducto--card-categ">
+                        <%=product.categoria.nombre.toUpperCase()%>
+                    </p>
+                    <a href="" class="sliderProducto--card-titulo">
+                        <%=product.nombre%>
+                    </a>
+                    <div class="sliderProducto--card-precio">
+                        <%if(product.descuento> 0) { %>
+                            <p class="precio formatoPrecio"><%=product.precio%>
+                            </p>
+                            <p class="precio-final formatoPrecio"><% let precioFinal=product.precio -
+                                    (product.precio * (product.descuento/100)) %>
+                                    <%= precioFinal.toFixed(2) %>
+                            </p>
+                            <% }else{ %>
+                             <p class="precio-final formatoPrecio"><%=product.precio%></p>
+                            <% }; %>
+                    </div>
+                     <% if (product.stock > 0) { %>
+                        <button class="sliderProducto-button btnAddCart" data-id="<%= product.id %>">Añadir al carrito</button>
+                    <%}else{%>
+                        <button class="sliderProducto-button sin-stock">sin stock</button>
+                    <%} %>
+
+                </div>
+    </article>
+    <% }); %>

@@ -1,0 +1,200 @@
+:root {
+    --color-1: #FF217A;
+    --color-3: #0f95b6;
+    --color-2: #1A1265;
+    --color-grisOscuro: #6b6b6b;
+    --color-grisClaro: #ebebeb;
+    --fuente: 'Quicksand';
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Quicksand';
+    font-size: 14px;
+}
+
+/*MAIN*/
+.main__container {
+ width: 80%;
+margin: 40px auto;
+display: flex;
+flex-wrap: wrap;
+}
+
+
+
+h1{
+    width: 100%;
+    text-align: center;
+    margin: 20px auto ;
+}
+
+.container{
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    border-radius: 3px;
+/*     border: 1px solid #d3d3d3; */
+    margin: 0 auto;
+}
+
+.titulo-bienvenida{
+    text-align: center;
+    margin: 5px auto;
+    width: 100%;
+}
+
+.secciones-perfil{
+    width: min(90%, 550px);
+    padding: 20px;
+    margin: 30px auto;
+    height: max-content;
+    border: 0.5px solid #d3d3d3;
+    border-radius: 5px;
+}
+
+
+
+.secciones-perfil h2{
+    text-align: start;
+    padding: 10px 0;
+    display: block;
+   
+}
+
+.datos-perfil{
+    margin-top: 10px;
+    border-radius: 3px;
+    padding: 5px 10px 10px;
+    display:  flex;
+    flex-wrap: wrap;
+    gap: 20px;
+align-items: center;
+    background-color: #f1f1f1;
+
+}
+.contenedor-avatar{
+    margin: 10px auto;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+.contenedor-avatar img{
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.datos{
+    width: 100%;
+}
+
+.datos h3, p{
+    padding: 5px 10px;
+}
+.datos-perfil h4{
+    display: block;
+    width: 100%;
+}
+
+.datos-acciones{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+.datos-acciones li{
+    padding: 10px 0;
+}
+
+
+.btn{
+    text-decoration: none;
+    padding: 5px 10px;
+    color: #212529;
+    list-style: circle;
+    background: none;
+    border: none;
+}
+
+.btn:hover {
+    color: #0f95b6; 
+
+}
+
+.btn i{
+    margin-right: 10px;
+}
+
+
+.pedidos{
+    margin-top: 10px;
+}
+.detalle-pedido{
+    padding: 10px;
+}
+
+.details{
+    width: 100%;
+}
+
+summary{
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.titulo-bienvenida{
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.text-danger {
+    color: #dc3545;
+    font-size: small;
+    font-family: sans-serif;
+    margin: 5px auto;
+    width: 100%;
+    text-align: center;
+}
+
+
+@media (min-width: 540px) {
+
+    .datos{
+        width: calc(100% - 120px);
+    }
+
+}
+
+@media (min-width: 769px) {
+
+    .datos-perfil{
+        margin: 10px auto 0;    
+    }
+
+
+.link-perfil{
+    font-size: 16px;
+}
+
+.datos-acciones li{
+    padding: 0;
+
+}
+
+}
+
+

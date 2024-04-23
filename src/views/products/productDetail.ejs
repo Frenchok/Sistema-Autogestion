@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/styles-slider.css">
+    <link rel="stylesheet" href="/css/styles-productDetail.css" />
+    <link rel="stylesheet" href="/css/styles-header.css">
+  
+    
+                
+        <title>
+            <%=product.nombre%>
+        </title>
+
+</head>
+
+<body>
+
+    <%- include('../partials/header') %>
+
+        <main class="main__container">
+            <section class="main__producto">
+                <div class="main__producto-enlaces">
+                    <a href="/">INICIO </a><span class="span">> </span><a href="/productos/filter?categorias=<%=product.categoria.id%>">
+                        <%=product.categoria.nombre.toUpperCase()%>
+                    </a>
+                </div>
+                <div class="main__producto-img" id="contenedor">
+                    <img src="/images/products/<%=product.imagen%>" alt="<%=product.nombre%>">
+
+                    
+                        <%if(product.descuento> 0) { %>
+                                <div class="main-contenedor--descuento">
+                                    <p class="main-descuento">
+                                        <%=product.descuento%>% OFF
+                                    </p>
+                                </div>
+                     <%} %>
+                </div>
+
+
+                <div class="main__producto-detalle">
+                    <h2 class="main__producto-nombre">
+                        <%=product.nombre%>
+                    </h2>
+
+                    <div class="main__producto-detalle--precio">
+                        <%if(product.descuento> 0) { %>
+                            <p class="main-precio formatoPrecio"><%=product.precio%>
+                            </p>
+                            <p class="main-precio-final formatoPrecio"><% let precioFinal=product.precio - (product.precio *(product.descuento/100)) %>
+                                <%= precioFinal.toFixed(2) %>
+                                    </p>
+                        <% }else{ %>
+                            <p class="main-precio-final formatoPrecio"><%=product.precio%></p>
+                        <% } %>
+                    </div>
+                    <% if (product.stock>0) {%>
+                        <p class="main__producto-detalle-disponible">Disponible</p>
+                        <form class="main__producto-detalle-cantidad ">
+                            <div class="cantidad">
+                                <input class="cantidad-item" type="number" value="1" min="1" />
+                            </div>
+                            <button class="agregar-carrito btnAddCartDetail" data-id="<%= product.id %>">
+                                Añadir al carrito
+                            </button>
+                        </form> 
+                        <%} else { %>
+                            <p class="main__producto-detalle-disponible">No disponible</p>
+                    <%} %>
+
+                    <div class="main__producto-descripcion">
+                        <h4 class=".descripcion">Descripción</h4>
+                        <p> <%=product.descripcion%> </p>
+                    </div>
+
+                    <p class="main__producto-detalle-info">Código: <span id="sku"><%=product.id%>
+                        </span></p>
+                    <p class="main__producto-detalle-info" id="categoria">Categoria: <a href="/productos/filter?categorias=<%=product.categoria.id%>" id="categoria">
+                            <%=product.categoria.nombre%>
+                        </a></p>
+                        <% if (isAdmin) { %>
+                            <div class="btn-product">
+                                <a href="/productos/edit/<%=product.id%>" class="boton-edit">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                        <span> Editar</span>
+                                </a>
+                                <form action="/productos/<%= product.id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de que quieres borrar este producto?');" style="display: inline-flex">
+                                    <button type="submit" class="boton-cancelar">
+                                        <i class="fa-solid fa-trash"></i><span> Eliminar</span>
+                                    </button>
+                                </form>
+                            </div>
+                         
+                        <% }%>
+                </div>
+            </section>
+
+
+            <section class="main__sliderProducto ">
+                <h3 class="slider-title">PRODUCTOS RELACIONADOS</h3>
+
+                <div class="card">
+
+                    <%- include('../partials/productsSlider') %>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <%- include('../partials/footer') %>
+
+</body>
+
+</html>

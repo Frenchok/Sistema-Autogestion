@@ -1,0 +1,48 @@
+<header>
+    <div class="header__container">
+        <div class="header__logo">
+            <a href="/"><img src="/images/database-svgrepo-com.svg" class="header__logo--img" alt="" /></a>
+        </div>
+
+        <nav class="nav-bar">
+            <ul class="nav-bar__options">
+
+                
+                <div class="dropdown">
+                    <h1 class="nav-bar_enlaces categoria"></h1class>Sistema de Autogestion 2.0</h1> 
+                   
+                </div>
+
+                
+            </ul>
+        </nav>
+
+       
+
+        <div class="header__icons">
+            <% if (locals.isLogged) { %>
+                <div class="header__icons--user user-perfil ">
+                    <div class="dropdown-perfil">
+                        <button class=""> <img src="/images/users/<%= userLogged.avatar %>" class="img-perfil" alt="">
+                        </button>
+                        <div class="dropdown-content-perfil">
+                                <a href="/user/profile">Mi Cuenta</a>
+                                <a href="/user/logout/">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+                <% if (isAdmin) { %>
+                    <small class="nombre-user">Admin <%= userLogged.nombre  %></small>
+                <% } else { %>
+                    <small class="nombre-user"><%= userLogged.nombre  %></small>
+                <% } %>
+            <% } else{%>
+                    <a href="/user/login" class="header__icons--user"><i class="fa-solid fa-circle-user"></i></a>
+             <% } %>
+                        
+                      
+                    </div>
+        </div>
+
+     </div>
+</header>
